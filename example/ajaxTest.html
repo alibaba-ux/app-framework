@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="mock-ajax.js"></script>
+
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+<div >
+
+</div>
+<script type="text/javascript">
+
+    jQuery(document).ready(function($) {
+      jasmine.Ajax.useMock();
+       var t=$.ajax({
+         url: '200.php',
+         success: function() {
+            alert('success');
+         },
+         error: function(){
+            alert('error');
+         }
+       })
+
+
+      mostRecentAjaxRequest().response({status: 200, responseText: "foo",s:t.s}); 
+
+       //mostRecentAjaxRequest().response({status: 500, responseText: "foo",s:t.s}); 
+      //jQuery.event.trigger( "ajaxSuccess" );
+    });
+</script>
+</body>
+</html>

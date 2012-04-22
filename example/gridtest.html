@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="gbk" />
+        <title>FE.ui.Grid</title>
+        <link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/widget/ui/jqgrid-min.css"/>
+        <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+       <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/grid.locale-en.js"></script>
+       <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/jqgrid-min.js"></script>
+        <!--script type="text/javascript" src="./grid.base.js"></script>
+        <script type="text/javascript" src="./grid.common.js"></script>
+        <script type="text/javascript" src="./grid.formedit.js"></script>
+        <!--script type="text/javascript" src="./jqgrid-min.js"></script-->
+        <style type="text/css">
+          .statecloum{
+            height:20px;
+            line-height:20px;
+            margin-top:0px;
+            float:left;position:relative;
+          }
+          .ui-th-column{
+            background-color:grey;
+          }
+          .actionbar{
+            height:20px;
+            width:300px;
+            padding:5px;
+          }
+          .actionbtn{
+            height: 23px;
+            width:122px;
+          }
+          .icon-search{
+            width: 16px;
+            height: 16px;
+            display:block;
+            position:absolute;
+            right:4px;
+            top:4px;
+            background-color: transparent;
+            background: url("http://alibaba-60945/open/images/icon_sprite.png") 0px -570px;
+          }
+          #txt-header-search {
+            border: 0;
+            float: left;
+            padding: 6px;
+            width: 122px;
+            height: 12px;
+            line-height: 12px;
+            font-size: 12px;
+            background-color: whiteSmoke;
+            }
+          .btn-header-search {
+            display: block;
+            float: left;
+            width: 16px;
+            height: 16px;
+          }
+          #txt-header-container{
+            display:block;
+            position:relative;
+          }
+          .ui-jqgrid-hbox{
+            background-color:grey;
+          }
+          #ui-jqgrid-bdiv{
+            height:auto;
+            overflow-y:scroll;
+          }
+        </style>
+    </head>
+    <body>
+    <table>
+      <tbody>
+        <tr class="actionbar">
+          <td  width="153"></td>
+          <td width="155"></td>
+          <td>
+            <div>
+              <label>状态:</label>
+              <select class="actionbtn">
+              <option value ="volvo">开发测试</option>
+              <option value ="saab">上架</option>
+              <option value="opel">下架</option>
+              </select>
+            </div>
+          </td>
+          <td style="background-color:grey;">
+           <div id="txt-header-container">
+				<input id="txt-header-search" class="fm-text" placeholder="查询" type="text">        
+                <a id="btn-header-search" href="javascript:;"><span class="icon icon-search"></span></a>
+			</div>
+           </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="mygrid"></table>
+    <div id="pagenation" class="ui-th-column"></div>
+        <script>
+            jQuery(function($) {
+                $("#mygrid").jqGrid({
+                    url:'./FE.ui.Grid.data.json',
+                    datatype: "json",
+                    colNames:['应用名称','证书', '状态', '操作'],
+                    loadComplete: function() {alert(1)},
+                    colModel:[
+                        {name:'id',index:'id', width:155},
+                        {name:'invdate',index:'invdate', width:190},
+                        {name:'name',index:'name asc, invdate', width:120},
+                        {name:'amount',index:'amount', width:180, align:"right"}
+                    ],
+                    rowNum:20,
+                    pager: '#pagenation',
+                    sortname: 'id',
+                    viewrecords: true,
+                    sortorder: "desc"
+                    });
+                jQuery("#mygrid").jqGrid('navGrid','#pagenation',{edit:false,add:false,del:false});
+                jQuery.event.add(jQuery("#mygrid")[0],'jqGridAfterLoadComplete',function(){
+                  alert(3);
+                },null,null);
+                //({loadComplete:function() {alert(1);}})
+            });
+        </script>
+    </body>
+</html>

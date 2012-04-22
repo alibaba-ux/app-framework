@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+<div >
+             <div id="demo1">
+                <a href="#" class="alitalk" data-alitalk="{id:'swainet'}"></a>
+                 <a href="#" class="alitalk" data-alitalk="{id:'swainet'}"></a>
+                  <a href="#" class="alitalk" data-alitalk="{id:'swainet'}"></a>
+                   <a href="#" class="alitalk" data-alitalk="{id:'swainet'}"></a>
+                <a href="#" class="alitalk" data-alitalk="{id:'swainet'}"></a>
+                <a href="#" class="alitalk" data-alitalk="{id:'swainet'}"></a>
+                <a href="#" class="alitalk" data-alitalk="{id:'swainet'}"></a>
+            </div>
+
+</div>
+<script type="text/javascript">
+/**
+ * Author: zhouquan.yezq
+ * time: 3/07/2012
+ * test the alitalk , to see it works in a clousre or not
+ */
+    jQuery(document).ready(function($) {
+        jQuery.use('web-alitalk', function() {
+           setTimeout(function(){
+             FE.util.alitalk(jQuery('.alitalk'));
+           },100); 
+        });    
+      
+    });
+
+</script>
+</body>
+</html>

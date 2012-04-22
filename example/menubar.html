@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <style type="text/css">
+     /*body{
+      margin:0px;
+      padding:0px;
+     }*/
+     
+     
+     .f12{
+       color: #666;
+       font: 12px/22px simsun;
+       text-align:left;
+     }
+     
+     .menubar{
+        width:100%;
+        height:22px;
+        border:1px solid black;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius:6px;
+      }
+      .menubar a, .menubar a:visited{
+          /*color: #666;*/
+          text-decoration: none;
+      }
+      .menubar a:hover{
+          /*color: #FFF !important;*/
+          text-decoration: underline;          
+      }
+      .menubtn{
+       position: relative;
+       zoom: 1;
+       float:left;
+       margin-left:5px;
+      }
+      .tx{
+       line-height: 20px;
+       cursor: pointer;
+       float:left;
+      }
+      .menubtnspliter{
+        margin:1px 5px;
+        float:left;
+        width:1px;
+        height:20px;
+      }
+      .iblock {
+            width: 12px;
+            height: 20px;
+            line-height: 20px;
+            background: url(http://alibaba-60945/open/images/icon.png) no-repeat -160px -420px;
+            zoom: 1;
+            float:left;
+        }
+        
+        .boxshadow{
+          display:none;
+          position: absolute;
+          top: 20px;
+          left: 0;
+          z-index: 1;
+          border-width: 1px;
+          background: white;
+          border-color: #CCC;
+          border-style: solid;
+          width: 100px;
+        }
+        .menuitm{
+            display: block;
+            line-height: 28px;
+            padding: 0 5px;
+        }
+    </style>
+
+</head>
+<body>
+<!--Menu veto template-->
+<div class="menubar" id="dashMenuBar">
+  <div class="menubtn f12">
+     <a href="#"><span class="tx">应用管理</span><span class="iblock"></span></a>
+     <div class="boxshadow">
+       <a href="" class="menuitm f12">应用列表不为空</a>
+       <a href="" class="menuitm f12">应用列表为空</a>
+       <a href="" class="menuitm f12">创建应用</a>
+     </div>
+  </div>
+  <span class="menubtnspliter">|</span>
+  <div class="menubtn f12">
+     <a href="#"><span class="tx">开发者资料维护</span></a>
+  </div>
+  <span class="menubtnspliter">|</span>
+   <div class="menubtn f12">
+     <a href="#"><span class="tx">其他</span></a>
+  </div>
+</div>
+
+<!-- Logic -->
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+       var $el=$("#dashMenuBar"); 
+       $el.delegate("div.menubtn", "mouseover", function(e){
+         var el=$(this);
+         el.css("background-color","#666");
+         var boxshadowEl=$(this).find("div.boxshadow");
+         boxshadowEl?boxshadowEl.css("display","block"):"";
+       });
+       $el.delegate("div.menubtn", "mouseout", function(e){
+         var el=$(this);
+         el.css("background-color","");
+         var boxshadowEl=el.find("div.boxshadow");
+         boxshadowEl?boxshadowEl.css("display","none"):"";
+       });
+    });
+</script>
+</body>
+</html>

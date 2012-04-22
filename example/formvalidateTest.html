@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+ 	<link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/widget/web/valid-min.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/modules/open/isv.register/model.js"></script>
+<style type="text/css">
+    #register li {
+      list-style: none;
+      width:100%;
+      float:left;
+      padding-left: 20px;
+      line-height:25px;
+    }
+    .viewEl{
+      float:left;
+      display:none;
+    }
+    .comp-ff-gcontainer-success{
+      
+    }
+    .comp-ff-gcontainer-failed{
+      
+    }
+    .comp-ff-globalmsg-inf{
+      
+    }
+ </style>
+
+</head>
+<body>
+<div id="register">
+   <form>
+     <ul>
+       <li>
+         <div class="comp-ff-gcontainer-success"><span class="comp-ff-globalmsg-inf"><span></div>
+       </li>
+       <li>
+           <label class="comp-ff-label-like">中国站帐号<span class="comp-ff-required">*</span></label>
+           <label class="readonlyEl" data-binding="text:account">MajorYe</label>
+       </li>       
+       <li>
+           <label class="comp-ff-label-like">联系人姓名<span class="comp-ff-required">*</span></label>
+           <input type="text" class="editEl comp-ff-input-text" data-binding="value:userName"/>
+           <label  class="viewEl" data-binding="text:userName"></label>
+           <em class="comp-ff-ffnote">不可超过18个中文字符</em>
+           <div class="comp-ff-fferror">
+             <p><span class="error">必填项！</span><p>
+           </div>
+       </li>       
+       <li>
+           <label class="comp-ff-label-like">联系电话<span class="comp-ff-required">*</span></label>
+           <input type="text" class="editEl comp-ff-input-text" data-binding="value:tel" data-valid="{required:true,type:'mobile'}" maxlength="20"/>
+           <em class="comp-ff-ffnote">手机例如：13988888888，座机例如：0571-88888888-8888</em>
+           <label  class="viewEl" data-binding="text:tel"></label>
+           <div class="comp-ff-fferror">
+             <p><span class="error">必填项或联系电话格式不正确，只能由数字和'-'组成！</span><p>
+           </div>
+       </li>       
+       <li>
+           <label class="comp-ff-label-like">电子邮箱<span class="comp-ff-required">*</span></label>
+           <input type="text" class="editEl comp-ff-input-text" data-binding="value:email" data-valid="{required:true,type:'email'}" maxlength="40"/>
+           <em class="comp-ff-ffnote">用于接收重要信息，请确保邮箱准确可用</em>
+           <label  class="viewEl" data-binding="text:email"></label>
+           <div class="comp-ff-fferror">
+             <p><span class="error">必填项或电子邮箱格式不对！</span><p>
+           </div>
+       </li>
+       <li><button type="button" id="registerBtn">提交</button></li>
+     </ul>
+   </form>
+</div>
+
+<script type="text/javascript">
+/**
+ * Author: zhouquan.yezq
+ * time: 2/21/2012
+ * test the form validation 
+ */
+ 
+   jQuery(document).ready(function($) {
+     var register=new ali.openpf.dash.register({$el:$("#register")});
+     window.top.tt=register;
+          register.logger.log(register.$("#registerBtn").html());
+     register.logger.log(register.doV();
+     register.logger.log("I am here");
+  });
+
+</script>
+</body>
+</html>

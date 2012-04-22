@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+        <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/class.js"></script>
+
+        <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/logging.js"></script>
+
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+<div >
+
+</div>
+<script type="text/javascript">
+/**
+ * Author: zhouquan.yezq
+ * time: 2/19/2012
+ * test the defineClass 
+ */
+    jQuery(document).ready(function($) {
+       var myLog = ali.uxcore.util.getLogger("ali.ux.openplatform");
+       myLog.setEnableLevel(4);
+       /*ali.defineClass("ali.uxcore.openpf.nav",ali.pubsub,{
+         hi:function(){
+           myLog.log("hi");
+         },
+         subEvent:function(){
+           this.sub("hi",this.hi,this);
+         },
+         pubEvent:function(){
+           this.pub('hi');
+         },
+         init:function(){
+           myLog.info(arguments)
+         }
+       });
+       
+       ali.defineClass("ali.uxcore.openpf.nav2",ali.uxcore.openpf.nav,function(KLASS, instance){
+          KLASS.hi2=function() {
+             this.logger.log("+++++++++++++ KLASS.hi2+++++++++++++");
+          };
+
+          instance.hi2= function(){
+            this.logger.log("++++instance.hi2+++++++++++++");
+          };
+       });
+*/
+       ali.defineClass("ali.uxcore.openpf.nav3",function(KLASS, instance){
+          KLASS.hi3=function() {
+             this.logger.log("+++++++++++++ KLASS.hi2+++++++++++++");
+          };
+
+          instance.hi3= function(){
+            this.logger.log("++++instance.hi2+++++++++++++");
+          };
+
+
+          instance.hi4= function(){
+            this.logger.log("++++instance.hi2+++++++++++++");
+          };
+       });
+       
+       //window.top.tt=ali.uxcore.openpf.nav;
+       /*var tt=new ali.uxcore.openpf.nav2('123','345','456'); 
+       tt.subEvent();
+       tt.pubEvent();
+       tt.hi2();*/
+
+       ali.uxcore.openpf.nav3.hi3();
+       var t=new ali.uxcore.openpf.nav3();
+       t.hi3();
+      
+    });
+
+</script>
+</body>
+</html>

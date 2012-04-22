@@ -1,0 +1,163 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+	<link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+  <link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+  <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+
+  <style type="text/css">
+   
+  </style>
+  <script type="text/javascript">
+   jQuery(function($){
+    $.add('sys-ibank', {
+        css: ['http://style.china.alibaba.com/css/sys/ibank/ibank-min.css'],
+        js: ['http://style.china.alibaba.com/js/sys/ibank/ibank.js'],
+        ver: '1.0'
+    });
+    $('.editEl').focus(
+      function(){
+          $(this).css({'border-color' : '#FF7300',"border-width":'1px'});
+      });
+
+    $('.editEl').blur(
+      function(){
+          $(this).css({'border-color' : ''});
+      });
+    $('#uploadbtn').click(function(e){
+        $.use('sys-ibank', function(){
+            FE.sys.iBank({
+                dialog: {
+                    open: function(){
+                        //alert('组件打开');
+                    }
+                },
+                pmDomain: 'picman-test.china.alibaba.com:40100',
+                tab: 'upload',
+                token: 'test',
+                source: 'picman',//必须改成调用方的应用名，若不知道应用名可咨询方亮
+                insert: function(selected){
+                    $.log(selected);
+                }
+            });
+        });
+    });
+  });
+</script>
+</head>
+<body>
+<div id="isvwelcome">
+  <div id="nav" class="openpf-nav w952 cirBorder">
+    <div class="content">
+          <ul>
+              <li class="fl"><a href="http://style.china.alibaba.com/open/lib/modules/open/isv" class="navbar-btn">首页</a></li>
+              <li class="fl"><a href="#" class="navbar-btn">文档中心</a></li>
+              <li class="fl sel-2chr"><a href="#" class="navbar-btn">开发者中心</a></li>
+          </ul>
+     </div>
+  </div>
+  <div class="w952 appmcontainer">
+
+      <div class="rheader f12">
+        <p>您的位置：开发者中心-> 编辑应用</p>
+      </div>
+
+      <div class="mtips f12">
+        <p>1、沙箱App Key API调用量无限制；请点击页面左侧配置沙箱环境进入沙箱进行测试</p>
+        <p>2、线上App Key API调用量初</p>
+        <p>3、线上App Key API调用量初</p>
+      </div>
+
+      <div class="mappstate f12">
+        <div class="paperIcon"></div>
+        <p>应用状态: <span>已上架</span><p>
+        <ul>
+          <li>
+            <span>App Key</span>
+            <span class="sl">256489d</span>
+          </li>
+          <li>
+            <span>App Secert</span>
+            <span class="sl"><a href="">查看</a> <a href="" class="sl">重置</a></span>
+          </li>
+          <li>
+            <span>应用安全等级</span>
+            <span class="sl mquestion">3级</span>
+          </li>
+          <li>
+            <span>证书流量</span>
+            <span class="sl">5000次/每天</span>
+          </li>
+          <li>
+            <span>证书权限</span>
+            <span class="sl"> <a href="">基础开发</a></span>
+          </li>
+          <li></li>
+        <ul>
+      </div>
+      <div class="mappform">
+        <form>
+         <ul>
+           <li>
+              <label class="comp-ff-label-like">中国站帐号<span class="comp-ff-required">*</span></label>
+              <label class="readonlyEl" data-binding="text:account">hello</label>
+           </li>     
+           <li>
+              <label class="comp-ff-label-like">支付宝帐号<span class="comp-ff-required">*</span></label>
+              <label class="readonlyEl" data-binding="text:account">helloworld@alipay.com</label>
+           </li>    
+           <li>
+              <label class="comp-ff-label-like">支付宝实名<span class="comp-ff-required">*</span></label>
+              <input type="button" style="width:100px" data-binding="" value="请绑定支付宝"/>
+           </li>       
+           <li>
+               <label class="comp-ff-label-like">固定电话<span class="comp-ff-required">*</span></label>
+               <input type="text" class="editEl comp-ff-input-text" data-binding="value:tel" data-valid="{required:true,type:'mobile'}" maxlength="20"/>
+               <em class="comp-ff-ffnote">座机0571-88888888-8888</em>
+               <label  class="viewEl" data-binding="text:tel"></label>
+               <div class="comp-ff-fferror">
+                 <p><span class="error"></span><p>
+               </div>
+           </li>       
+           <li>
+               <label class="comp-ff-label-like">手机<span class="comp-ff-required">*</span></label>
+               <input type="text" class="editEl comp-ff-input-text" data-binding="value:email" data-valid="{required:true,type:'email'}" maxlength="40"/>
+               <em class="comp-ff-ffnote">类似13988888888</em>
+               <label  class="viewEl" data-binding="text:email"></label>
+               <div class="comp-ff-fferror">
+                 <p><span class="error"></span><p>
+               </div>
+           </li>
+          <li>
+               <label class="comp-ff-label-like">形象图片<span class="comp-ff-required"></span></label>
+               <div class="f12">
+                 <div  class="ruserImage"></div>
+                 <div class="ruploadimgtip">
+                    <p>公司请上传公司形象图片 个人可上传头像</p>
+                    <p><input type="button" value="上传图片" style="width:80px" id="uploadbtn"/></p>
+                    <p>尺寸80*80 大小：不超过50kb 格式: JPG或PNG</p>
+                 </div>
+               </div>
+           </li>
+
+          <li>
+               <div class="comp-ff-fixed"><input type="checkbox" class="editEl"/><p>我已阅读并同意 <span>《阿里巴巴开发平台合作协议》</span></p>
+               </div>
+           </li>
+
+            <li> 
+               <div class="comp-ff-fixed">
+               <button  type="button" value="" class="mappsave"> 保存修改</button>
+                <button  type="button" value="" class="mappsave-publish"> 保存修改提交申请发布</button>
+               </div>
+           </li>
+         </ul>
+       </form>
+       
+      </div>
+  </div>
+
+
+</body>
+</html>

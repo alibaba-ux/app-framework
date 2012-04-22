@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+	<link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+  <link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+  <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/modules/open/isv.createapp/model.js"></script>
+
+  <style type="text/css">
+  </style>
+  <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        var mylog=ali.getLogger("ali.openpf.isv.createApp");
+        mylog.info("++++++++start+++++++++++");
+        var capp=new ali.openpf.isv.createApp({$el:jQuery("#isvCreateApp")});
+        mylog.info(capp);
+      });
+</script>
+</head>
+<body>
+<div id="isvCreateApp">
+  <div id="nav" class="openpf-nav w952 cirBorder">
+    <div class="content">
+          <ul>
+              <li class="fl"><a href="http://style.china.alibaba.com/open/lib/modules/open/isv" class="navbar-btn">首页</a></li>
+              <li class="fl"><a href="#" class="navbar-btn">文档中心</a></li>
+              <li class="sel-2chr fl"><a href="#" class="navbar-btn">开发者中心</a></li>
+          </ul>
+     </div>
+  </div>
+
+  <div class="menubarContainer w952">
+    <div class="menubar" id="dashMenuBar">
+      <div class="menubtn f12 menurel" id="appmanage">
+         <a href="#"><span class="tx">应用管理</span><span class="iblock"></span></a>
+         <div class="boxshadow menurel">
+           <a href="http://style.china.alibaba.com/open/lib/modules/open/isv.applist/" class="menuitm f12">应用列表</a>
+           <a href="http://style.china.alibaba.com/open/lib/modules/open/isv.createapp/" class="menuitm f12">创建应用</a>
+         </div>
+      </div>
+      <div class="menubtn f12">
+         <a href="#"><span class="tx">开发者资料维护</span></a>
+      </div>
+    </div>
+ </div>
+
+  <div class="w952 cappcontainer">
+
+      <div class="rheader f12">
+        <p>您的位置: 开发者中心-> 创建应用</p>
+      </div>
+
+     
+      <div class="cappform f12">
+        <form>
+         <ul>
+      
+           <li>
+               <label class="comp-ff-label-like">应用名称<span class="comp-ff-required">*</span></label>
+               <input type="text" class="editEl comp-ff-input-text" data-binding="value:tel" data-valid="{required:true,type:'mobile'}" maxlength="20"/>
+               <em class="comp-ff-ffnote"></em>
+               <label  class="viewEl" data-binding="text:tel"></label>
+               <div class="comp-ff-fferror">
+                 <p><span class="error"></span><p>
+               </div>
+           </li>       
+           <li>
+               <label class="comp-ff-label-like">应用详情<span class="comp-ff-required">*</span></label>
+               <textarea rows="15" cols="100" class="editEl" data-binding="value:tel" data-valid="{required:true,type:'mobile'}" ></textarea>
+               <em class="comp-ff-ffnote"></em>
+               <label  class="viewEl" data-binding="text:tel"></label>
+               <div class="comp-ff-fferror">
+                 <p><span class="error"></span><p>
+               </div>
+           </li>  
+          <li>
+               <div class="comp-ff-fixed"><input type="checkbox" class="editEl"/><p>我已阅读并同意 <span>《阿里巴巴开发平台合作协议》</span></p>
+               </div>
+           </li>
+
+            <li> 
+               <div class="comp-ff-fixed">
+               <button  type="button" value="" class="" id="createAppbtn"> 提交</button>
+               </div>
+           </li>
+         </ul>
+       </form>
+       
+      </div>
+  </div>
+
+
+</body>
+</html>

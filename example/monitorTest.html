@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/logging.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/monitor.js"></script>
+    <style type="text/css">
+    .cirBorder{
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius:6px;
+    }
+    .fl{
+      float: left;
+    }
+    .fr{
+      float:right;
+    }
+    ul li{
+      list-style-type: none;
+      border-bottom: dashed 1px black;
+    }
+    .line-through{
+      text-decoration: line-through;
+    }
+    .comp-monitor-stack{
+       border: solid 1px black;
+       width: 400px;
+       _width:400px;
+       font-size: 14px;
+       color:#2b2b2b;
+       line-height: 21px;
+       font-weight: normal;
+       padding: 10px 0px;
+       height:auto;
+       background-color:#FFF;
+       margin:10px 50px;
+    }
+    .comp-monitor-stack .header{
+      font-size:20px;
+      background-color:black;
+      color:white;
+      height:21px;
+      padding-left:8px;
+    }
+    .comp-monitor-stack .content{
+      padding:0px 8px;
+    }
+    .screenShotContainer{
+      width:100%;
+      padding:10px 50px;
+    }
+    </style>
+
+</head>
+<body>
+<div id="descContainer">
+  <div class="cirBorder comp-monitor-stack fl">
+     <h2 class="header"> <span class="line-through">what's</span> this?</h2>
+     <p class="content">this is the web application log monitor test, you just press ctrl+alt+l quick key to start the log</p>
+  </div>
+
+  <div class="cirBorder comp-monitor-stack fl">
+     <h2 class="header"> <span class="line-through">what's</span> problem it want to solve?</h2>
+     <ul class="content">
+        <li>1: IE lower version do not have some console method, like console.error, which high version browser have, so if use this in our code, it will case script error under lower IE version </li>
+        <li>2: log level control, log filter etc, during the development, we could open the log functionality, before publish the project, we could disalbe the log feature.</li>
+        <li>3: this is the very impress feature, we could see the log , even under IE6. how? see how stack :)-</li>
+     </ul>
+  </div>
+
+  <div class="cirBorder comp-monitor-stack fl">
+     <h2 class="header"><span class="line-through"> How</span> to run?</h2>
+     <p class="content"> You just press ctrl+alt+l quick key, to launch log monitor</p>
+  </div>
+
+</div>
+
+<div id="screenShotContainer cirBorder">
+   
+</div>
+
+<script type="text/javascript">
+/**
+ * Author: zhouquan.yezq
+ * time: 2/19/2012
+ * test the defineClass 
+ */
+    jQuery(document).ready(function($) {
+      ali.system.openLogMemory=true;
+      var mylog=ali.getLogger("logger-monitor-tester");
+      var int;
+      mylog.setEnableLevel(4);
+      $(document).keydown(function(e) {
+        if (e.ctrlKey && e.altKey && e.keyCode == 76) { //ctrl+alt+l
+          mylog.log("log start++=");
+          int=self.setInterval(function(){
+             var logType=$.now().toString().slice(-1);
+             switch (logType)
+             {
+                case '1':
+                  mylog.info("####"+$.now()+"####");
+                  break;
+                case '2':
+                  mylog.warn("####"+$.now()+"####");
+                  break;
+                case '3':
+                  mylog.debug("####"+$.now()+"####");
+                  break;
+                case '4':
+                  mylog.error("####"+$.now()+"####");
+                  break;
+                default:
+                  mylog.log("####"+$.now()+"####");
+             }
+             
+          },500);
+        }
+
+        if (e.altKey && e.keyCode == 68) { //ctrl+d
+          int=window.clearInterval(int);
+        }
+      });
+    });
+
+</script>
+</body>
+</html>

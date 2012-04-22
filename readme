@@ -1,0 +1,18 @@
+this is the app-framework for 3part open platform.
+ 
+ISSUE:
+ NULL 
+ 
+TODO:
+[2/26/2012 zhouquan.yezq]
+1: right now the closure-compiler compile level , I use the 
+   'whitespace', if use the 'simple', it will throw errors, so later
+   I will fix it.
+2: add unit test.
+3: think about the automate functionality test, do we need it? if need, what's 
+   time we will involve?
+   
+Done:
+[2/26/2012 zhouquan.yezq]
+1: add js compile and obfuscate build project
+2: add jsdoc

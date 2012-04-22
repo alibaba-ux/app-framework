@@ -1,0 +1,44 @@
+﻿<style type="text/css">
+    #register li {
+      list-style: none;
+      width:100%;
+      float:left;
+      padding-left: 20px;
+      line-height:25px;
+    }
+ </style>
+<div id="register">
+   <form>
+     <ul>
+       <li>
+           <label class="label-like">中国站帐号<span class="field-required">*</span></label>
+           <label class="readonlyEl" data-binding="text:userName">MajorYe</label>
+       </li>       
+       <li>
+           <label class="label-like">联系人姓名<span class="field-required">*</span></label>
+           <input type="text" class="editEl input-text" data-binding="value:userName"/>
+           <em class="ffnote">不可超过18个中文字符</em>
+           <div class="fferror">
+             <p><span class="error">必填项！</span><p>
+           </div>
+       </li>       
+       <li>
+           <label class="label-like">联系电话<span class="field-required">*</span></label>
+           <input type="text" class="editEl input-text" data-binding="value:tel" data-valid="{required:true,type:'mobile'}" maxlength="20"/>
+           <em class="ffnote">手机例如：13988888888，座机例如：0571-88888888-8888</em>
+           <div class="fferror">
+             <p><span class="error">必填项或联系电话格式不正确，只能由数字和'-'组成！</span><p>
+           </div>
+       </li>       
+       <li>
+           <label class="label-like">电子邮箱<span class="field-required">*</span></label>
+           <input type="text" class="editEl input-text" data-binding="value:email" data-valid="{required:true,type:'email'}" maxlength="20"/>
+           <em class="ffnote">用于接收重要信息，请确保邮箱准确可用</em>
+           <div class="fferror">
+             <p><span class="error">必填项或电子邮箱格式不对！</span><p>
+           </div>
+       </li>
+       <li><button type="button" id="registerBtn">提交</button></li>
+     </ul>
+   </form>
+</div>

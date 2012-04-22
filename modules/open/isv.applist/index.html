@@ -1,0 +1,121 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+	<link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+  <link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+  <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/grid.locale-en.js"></script>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/jqgrid-min.js"></script>
+  <link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/widget/ui/jqgrid-min.css"/>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/modules/open/isv.createapp/model.js"></script>
+
+  <script type="text/javascript">
+     jQuery(function($) {
+                $("#mygrid").jqGrid({
+                    url:'../../../staticdata/getApplist.json',
+                    datatype: "json",
+                    colNames:['应用名称','证书', '状态', '操作'],
+                    colModel:[
+                        {name:'appName',index:'appName', width:220,formatter : function(value, options, rData){
+                          return '<div><div style="float:left;width:30px;height:30px;border:1px solid #999;margin:11px 10px 10px 0px"></div><p style="line-height:55px;">'+value+'</p></div>'
+                        }},
+                        {name:'paper',index:'paper', width:300,formatter: function(value, options, rData){
+         
+                          return '<div><span>APP Key: </span><span style="color:#0066cc">'+value+'</span><span style="padding-left:10px;">流量: </span><span>'+rData[2]+' 次/每天</span></div>';
+                        }},
+                        {name:'status',index:'status', width:200,formatter: function(value, options, rData){
+                          var innerHTML='';
+                          if(rData[3]=='testing'){
+                          innerHTML='<span class="applistItem-status apptesting"></span><span style="line-height:40px">正式测试环境</span>';
+                          }else if(rData[3]=='checking'){
+                          innerHTML='<span class="applistItem-status appchecking"></span><span style="line-height:40px">应用审核中</span>';
+                          }else if(rData[3]=='checkfailed'){
+                            innerHTML='<span class="applistItem-status checkfailed"></span><span style="line-height:40px">应用审核不通过</span>';
+                          }else if(rData[3]=='online'){
+                            innerHTML='<span class="applistItem-status online"></span><span style="line-height:40px">已上架</span>';
+                          }else if(rData[3]=='onchecking'){
+                            innerHTML='<span class="applistItem-status onchecking"></span><span style="line-height:40px">待审核</span>';
+                          }
+                          return innerHTML;
+                        }},
+                        {name:'operation',index:'operation', width:200, align:"left", formatter: function(value, options, rData){
+                          if(rData[3]=='testing' || rData[3]=='checkfailed'){
+                            return '<div class="menubtn f12"><a href="http://style.china.alibaba.com/open/lib/modules/open/isv.modifyappinfo/"><span class="tx">修改</span></a></div><span class="menubtnspliter">|</span><div class="menubtn f12"><a href="#"><span class="tx appdelete">删除</span></a></div>';
+                          }else{
+                            return '<div class="menubtn f12"><a href="#"><span class="tx appinfview">查看</span></a></div>';
+                          }
+                        }}
+                    ],
+                    rowNum:20,
+                    sortname: 'id',
+                    viewrecords: true,
+                    sortorder: "desc"
+                    });
+                jQuery("#mygrid").jqGrid('navGrid',{edit:false,add:false,del:false});
+                jQuery(".ui-jqgrid-bdiv").css({"height":"600px",'width':'915px', 'overflow-x': 'hidden'});
+                jQuery('.ui-jqgrid-hdiv').css('width','915px');
+                jQuery("#mygrid").css('width',"860px");
+                setTimeout(function(){
+                  var mylog=ali.getLogger("ali.openpf.isv.applist");
+                  mylog.info("++++++++start+++++++++++");
+                  var capp=new ali.openpf.isv.createApp({$el:jQuery("body")});
+                  mylog.info(capp);
+                  },50);
+            });
+</script>
+</head>
+<body>
+<div id="applist">
+  <div id="nav" class="openpf-nav w952 cirBorder">
+    <div class="content">
+          <ul>
+              <li class="fl"><a href="http://style.china.alibaba.com/open/lib/modules/open/isv" class="navbar-btn">首页</a></li>
+              <li class="fl"><a href="#" class="navbar-btn">文档中心</a></li>
+              <li class="sel-2chr fl"><a href="#" class="navbar-btn">开发者中心</a></li>
+              <!--li class="fr navbar-cappbtn" ><a href="http://style.china.alibaba.com/open/lib/modules/open/isv.createapp/" class="navbar-cbtn">创建应用</a></li-->
+          </ul>
+     </div>
+  </div>
+
+  <div class="menubarContainer w952">
+    <div class="menubar" id="dashMenuBar">
+      <div class="menubtn f12 menurel" id="appmanage">
+         <a href="#" class=""><span class="tx " id="appmanagemenu">应用管理</span><span class="iblock " ></span></a>
+         <div class="boxshadow menurel">
+           <a href="http://style.china.alibaba.com/open/lib/modules/open/isv.applist/" class="menuitm f12 " id="applistsubmenu">应用列表</a>
+           <a href="http://style.china.alibaba.com/open/lib/modules/open/isv.createapp/" class="menuitm f12 " id="creatappsubmenu">创建应用</a>
+         </div>
+      </div>
+      <div class="menubtn f12">
+         <a href="#"><span class="tx">开发者资料维护</span></a>
+      </div>
+    </div>
+ </div>
+
+  <div class="w952 main-container">
+
+      <div class="rheader f12">
+        <p>您的位置：开发者中心-> 应用列表</p>
+        <span class="f12"><a href="http://style.china.alibaba.com/open/lib/modules/open/isv.createapp/index.html">创建应用</a></span>
+      </div>
+      <div class="applist_container">
+        <table id="mygrid"></table>
+      </div>
+      <div style="display:none;width:350px;height:100px;border:1px solid #b2b2b2;" id="applistDlg">
+         <div id="dheader" class="dheader f12"><p id="" style="float:left;line-height:30px;">审核不通过详情</p><span id="closedlgIcon">X</span></div>
+         <div class="dbody">
+            <p id="dbody" >你的应用涉及到越权的行为，请与管理员联系。</p>
+            <button id="confirmbtn">确认</button>
+         </div>
+      </div>
+
+      <div class="applist-createblk h12">
+          <span>您还未创建应用，</span><span><a href="">请创建</a></span>
+      </div>
+  </div>
+
+
+</body>
+</html>

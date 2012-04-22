@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+  <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/jquery-1.7.1.min.js"></script>  
+<style type="text/css">
+  .checkbox-test{
+    background-color:#fff6e7;
+    width:600px;
+    height:200px;
+    padding:10px 20px;
+    float:left;
+    margin-left:50px;
+  }
+   .checkbox-test h2{
+     background-color:#eef3f9;
+   }
+   .output{
+     width:350px;
+     height:50px;
+     line-height:50px;
+     border:1px dashed red;
+     padding:5px;
+    background-color:#FFF;
+   }
+ </style>
+
+</head>
+<body>
+
+<div id="test2" class="checkbox-test">
+<h2>checkbox checked attr works well in jquery-1.7.1</h2>
+  <input type="checkbox" id="tcb2"/><span>Click me, to see the difference</span>
+  <div id="output2" class="output">
+  </div>
+</div>
+<script type="text/javascript">
+
+   jQuery(document).ready(function($) {
+     $("#tcb2").attr("checked",true);
+     $("#tcb2").change(function(){
+       
+       $("#output2").html('Checkbox checked attr value is: '+$(this).attr('checked'));
+     });
+  });
+  
+</script>
+</body>
+</html>

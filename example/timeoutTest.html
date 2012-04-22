@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+ 	<link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+  	<link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/network.js"></script>
+
+    <style type="text/css">
+        div{
+            border:1px solid #dcdcdc;
+            padding:5px;
+        }
+        div p{
+            font-size: 20px;
+        }
+         div label{
+             margin:5px;
+         }
+    </style>
+     <script type="text/javascript">
+    jQuery(document).ready(function($) {
+       $("#mybtn").click(function(){
+           ali.network.ajax({
+               url:'timeout.php',
+               datatype: 'json',
+               showMsgObj:{
+                   msgEl: $("#errorshow"),
+                   errorMsg:'错误信息',
+                   successMsg:'成功信息'
+               },success:function(data){
+                  console.info(data);
+               },error:function(){
+
+               }
+          })
+       });
+
+    });
+</script>
+</head>
+
+<body>
+
+<div class="w952">
+     <label id="errorshow">
+
+     </label>
+    <button id="mybtn">click me</button>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>

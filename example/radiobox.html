@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+ 	<link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <!--script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/jquery-1.7.1.min.js"></script-->  
+<style type="text/css">
+  
+ </style>
+
+</head>
+<body>
+<div id="test1" style="vertical-align: top;">
+<ul><li >
+  <text class="vt">AAA</text><input name="test" type="radio" id="radio1" Checked  class="vt"/>
+       <text  class="vt">BBB</text><input name="test"  class="vt"  type="radio" id="radio2"/>
+  <div class="radiopaytyperef"  class="vt">
+      <div id="paytype" class="paytype">
+          <ul>
+              <li><input  type="text" id="month" />元/月</li>
+              <li><input  type="text" id="season"/>元/季度</li>
+              <li><input  type="text" id="halfyear" />元/半年</li>
+              <li><input  type="text" id="year"/>元/年</li>
+          </ul>
+     </div>
+  </div>
+  <div class="clear"></div>
+  </li>
+  </ul>
+</div>
+<label class="fl lh20">
+<input id="radio1" class="devType1 fl" type="radio" checked="" value="free" style="float:left;" name="_fm.e._0.a">
+免费
+</label>
+<label class="fl lh20">
+<input id="radio2" class="fl devType1" type="radio" value="commercial" name="_fm.e._0.a">
+收费
+</label>
+
+<script type="text/javascript">
+
+   jQuery(document).ready(function($) {
+     $("#radio1").change(function(e){
+       $("#paytype").css({'display':'none'})
+     });
+     $("#radio2").change(function(e){
+       $("#paytype").css({'display':'inline-block','*display':'inline','zoom':'1'});
+       $('.radiopaytyperef').css({'zoom':1});
+     })
+  });
+  
+</script>
+
+</body>
+</html>

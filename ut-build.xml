@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="cub-ux-ut" default="html" basedir=".">
+
+    <property name="js_suite_path" value="./tests/jssuite.js" description=""/>
+    <property name="html_suite_path" value="./tests/htmlsuite.js" description=""/>
+	<property name="lib" location="./java/lib"/>
+    <path id="classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar"/>
+            <include name="*/*.jar"/>
+        </fileset>
+    </path>
+    <target name="compile" depends="">
+       <mkdir dir="java/build/classes"/>
+      <javac srcdir="cbu/ux" destdir="build/classes">
+      	 <classpath refid="classpath"/>
+      	</javac>
+    </target>
+
+
+	<target name="jar" depends="compile">
+	 <jar destfile="${lib}/cbu_ux_ut.jar" basedir="java/build/classes">
+	            <manifest>
+	               <attribute name="Main-class" value=""/>
+	            </manifest>
+	        </jar>
+	 </target>
+
+    <target name="js" description="Starts ut for pure JS" depends="">
+        <java fork="true" classname="cbu.ux.JSUTest">
+            <classpath refid="classpath"/>
+        	<arg value="${js_suite_path}"/>
+        </java>
+    </target>
+	
+    <target name="html" description="Starts ut for HTML" depends="">
+        <java fork="true" classname="cbu.ux.HTMLUTest">
+            <classpath refid="classpath"/>
+        	<arg value="${html_suite_path}"/>
+        </java>
+    </target>
+</project>

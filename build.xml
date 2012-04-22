@@ -1,0 +1,78 @@
+<project name="" basedir="." default="compile">
+
+  <property file="build.properties"/>
+  
+  <property name="build.dir" value="${basedir}/build"/>
+  <property name="results.dir" value="${build.dir}/results"/>
+  <property name="doc.dir" value="${build.dir}/docs"/>
+  <property name="jssrc.dir" value="${basedir}/lib"/>
+  <property name="jsdoctoolkit.dir" value="${basedir}/tools/jsdoc/"/>
+  <property name="closure-compiler.dir" value="${basedir}/tools/closure-compiler"/>
+
+  <path id="jsdoctoolkit">
+    <pathelement path="${basedir}/tools/jsdoc-toolkit-ant-task-1.1.2.jar"/>
+    <pathelement path="${basedir}/tools/jsdoc/js.jar"/>
+  </path>
+
+  <path id="compiler">
+    <pathelement path="${closure-compiler.dir}/compiler.jar"/>
+  </path>
+
+  <target name="-ant-version">
+    <fail message="coreJS requires Ant 1.8.1">
+      <condition>
+        <not>
+          <antversion atleast="1.8.1"/>
+        </not>
+      </condition>
+    </fail>
+  </target>
+  
+  <target name="-init-jsdoctoolkit">
+    <taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpathref="jsdoctoolkit"/>    
+  </target>
+
+  <target name="-init-compiler">
+    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
+        classpathref="compiler"/>
+  </target>
+
+  
+  <target name="compile" depends="-ant-version, -init-compiler" 
+      description="Compiles the source JavaScript files into a single core.js file">
+    
+    <jscomp compilationLevel="${compiler.level}" warning="verbose" 
+            debug="false" output="${build.dir}/${dist.core}">
+
+      <externs dir="${jssrc.dir}" files="${compiler.externs}"/>
+      <sources dir="${jssrc.dir}" files="${compiler.files}"/>
+
+    </jscomp>
+    
+    <length file="${build.dir}/${dist.core}" property="core.size.expanded"/>
+    <gzip destfile="${build.dir}/${dist.core}.gz">
+      <file file="${build.dir}/${dist.core}"/>
+    </gzip>
+    <length file="${build.dir}/${dist.core}.gz" property="core.size.gzipped"/>
+
+    <echo></echo>
+    <echo message="coreJS is only ${core.size.expanded} bytes (or ${core.size.gzipped} bytes gzipped)"/>
+    
+  </target>
+
+  <target name="doc" description="Generates all API documentation" depends="-init-jsdoctoolkit">
+    <jsdoctoolkit 
+        suppresssourceout="true"
+        includeundocumented="false"
+        jsdochome="${jsdoctoolkit.dir}" 
+        template="jsdoc"
+        outputdir="${doc.dir}"
+        inputdir="${jssrc.dir}">
+    </jsdoctoolkit>
+  </target>
+  
+  <target name="clean" description="Cleans all build artifacts">
+    <delete dir="${build.dir}"/>
+  </target>
+	
+</project>

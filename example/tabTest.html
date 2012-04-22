@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/class.js"></script>
+  <link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+<div id="isvwelcome">
+
+  <div id="banner" class="openpf-banner w952">
+      <div class="bannertab" id="bannertab">
+          <ul>
+              <li class="f-tab-b"><img src="http://img.china.alibaba.com/cms/upload/2012/668/982/289866_1255716180.png?001"></li>
+              <li class="f-tab-b"  style="display: none;"><img src="http://img.china.alibaba.com/cms/upload/2012/668/982/289866_1255716180.png?001"></li>
+              <li class="f-tab-b"  style="display: none;"><img src="http://img.china.alibaba.com/cms/upload/2012/668/982/289866_1255716180.png?001"></li>
+          </ul>
+          <ul class="clr bannernav">
+              <li class="f-tab-t nav-point curpoint"> </li>
+              <li class="f-tab-t nav-point "></li>
+              <li class="f-tab-t nav-point "></li>
+          </ul>
+      </div>
+  </div>
+  </div>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        jQuery.use('ui-tabs', function() {
+            jQuery('#bannertab').tabs({
+                isAutoPlay:true,
+                effect:'fade',
+                select: function(e, data) {
+                   console.log("+++++++++++");
+                },
+                currentClass:'curpoint'
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

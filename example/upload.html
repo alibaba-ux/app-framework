@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>jQuery.ui.flash.uploader</title>
+        <link href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-flying.css" rel="stylesheet"/>
+        <link href="http://wd.alibaba-inc.com/fdevlib/static/prettify/prettify.css" rel="stylesheet"/>
+        <link href="http://wd.alibaba-inc.com/fdevlib/static/css/app.css" rel="stylesheet"/>
+        <style>
+
+            #demo2 input {
+
+                height: 32px;
+
+                font-size: 50px;
+
+            }
+
+            #demo2 a.ui-state-hover {
+
+                background-position: 0 -32px;
+
+            }
+
+            
+
+            #demo2 a.ui-state-active {
+
+                background-position: 0 -64px;
+
+            }
+
+            
+
+            #demo2 .ui-flash-disabled a {
+
+                background-position: 0 -96px !important;
+
+            }
+
+            .comp-editimg-article{
+                width:580px;
+                height:440px;
+                background-color:#FFF;
+                display:none;
+           }
+           .comp-editimg-actionbar{
+                width:150px;
+                height:35px;
+                position:absolute;
+                right:0px;
+                top:410px;
+          }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div id="doc">
+
+            <h1>ui-flash-uploader : uploader上传组件</h1>
+
+            <h2>Demo运行之前</h2>
+
+            <ul>
+
+                <li>
+
+                    需要绑定host<pre class="prettyprint">
+
+10.20.136.129    picman-test.china.alibaba.com #40100
+
+10.20.172.7  loginchina-test.alibaba.com
+
+10.20.141.151    test.img.china.alibaba.com</pre>
+
+                </li>
+
+                <li>
+
+                    需要登录测试环境: <a href="https://loginchina-test.alibaba.com:3300/member/signin.htm" target="_blank">https://loginchina-test.alibaba.com:3300/member/signin.htm</a>
+
+                    帐号：djtest190 密码：1111112
+
+                </li>
+
+            </ul>
+
+            <h2>文件上传</h2>
+
+            <div id="demo1">
+
+                <div class="flash">
+
+                </div>
+
+                <ul class="result">
+
+                </ul>
+
+            </div>
+
+    <div id="comp-editimg" class="comp-editimg-article">
+        <div class="comp-editimg-header">图片编辑</div>
+        <table>
+            <tr>
+                <td class="comp-editimg-mainimg">
+                    <img src="" id="target" alt="Flowers" />
+                </td>
+                <td style="vertical-align:top;" >
+                    <div class="comp-editimg-100img">
+                        <img src=""  id="preview" class="preview" alt="Preview" />
+                    </div>
+                </td>               
+            </tr>
+        </table>
+        <div class="comp-editimg-actionbar">
+            <form action="ImageCropping.php" method="post" onsubmit="return checkCoords();">
+                <input type="hidden" id="x" name="x" />
+                <input type="hidden" id="y" name="y" />
+                <input type="hidden" id="w" name="w" />
+                <input type="hidden" id="h" name="h" />
+                <input type="button" id="comp-editimg-cancelbtn" value="取消" />
+                <input type="submit" id ="comp-editimg-sumbitbtn" value="确定" />
+            </form>
+        </div>
+    </div>
+
+        <script src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+        <script src="http://wd.alibaba-inc.com/fdevlib/static/prettify/prettify.js"></script>
+        <script src="http://wd.alibaba-inc.com/fdevlib/static/js/app.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/jquery.Jcrop.min.js"></script>
+    <link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/jquery.Jcrop-min.css" type="text/css" />
+    <link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css" type="text/css" />
+
+        <script>
+            jQuery(function($){
+                $.DEBUG = true;
+                $.use('ui-flash-uploader2, util-debug', function(){
+                    $.DEBUG = true;
+
+                    var result1 = $('ul.result', '#demo1');
+                    var demo1 = $('div.flash', '#demo1').flash({
+                        module: 'uploader2'
+                    }).bind('fileSelect.flash', function(e, o){
+                    $(this).flash('uploadAll', 'http://picman-test.china.alibaba.com:40100/album/ajax/image_upload_ajax.json', {
+                            drawTxt: true,
+                            albumId: '6597922',
+                            _csrf_token: 'test',
+                            source: 'picman'
+                        }, 'imgFile', 'fname');
+                    }).bind('swfReady.flash', function(e){
+                        $.log('swfReady');
+                    }).bind('processStart.flash', function(e, o){
+                        $.log('processStart');
+                        $.log(o.file);
+                    }).bind('processProgress.flash', function(e, o){
+                        $.log('processProgress');
+                        $.log(o.file);
+                    }).bind('processFinish.flash', function(e, o){
+                        $.log('processFinish');
+                        $.log(o.file);
+                    }).bind('transferStart.flash', function(e, o){
+                        $.log('transferStart');
+                        $.log(o.file);
+                    }).bind('transferProgress.flash', function(e, o){
+                        $.log('transferProgress');
+                        $.log(o.file);
+                    }).bind('transferError.flash', function(e, o){
+                        $.log('transferError');
+                        $.log(o.file);
+                    }).bind('transferComplete.flash', function(e, o){
+                        $.log('transferComplete');
+                        $.log(o.file);
+                    }).bind('transferCompleteData.flash', function(e, o){
+                        $.log('transferCompleteData');
+                        $.log(o.file);
+                        var file = o.file;
+                        
+                        if (file.status === 'done') {
+                            var msg = eval('(' + file.msg + ')');
+                            $.log("_________"+msg.result);
+                            if (msg.result === 'success') {
+                                $('#target').attr("src",msg.imgUrls[0]);
+                                $('#preview').attr("src",msg.imgUrls[0]);   
+                                      $('#target').Jcrop({
+                                        onChange: updatePreview,
+                                        onSelect: updatePreview,
+                                        aspectRatio: 1
+                                      },function(){
+                                        // Use the API to get the real image size
+                                        var bounds = this.getBounds();
+                                        boundx = bounds[0];
+                                        boundy = bounds[1];
+                                        // Store the API in the jcrop_api variable
+                                        jcrop_api = this;
+                                        jcrop_api.setSelect(getRandom());
+                                      });          
+                                $.use('ui-core,ui-draggable,ui-dialog', function(){
+                                     $('#comp-editimg').dialog({
+                                      center  :true,
+                                      modalCss: {
+                                           backgroundColor: '#FFF'
+                                      },
+                                      draggable: {
+                                          handle: 'div.comp-editimg-header',
+                                          containment: 'body'
+                                      },
+                                      shim:true
+                                     });
+                                });
+
+                            }
+                        }
+                    }).bind('finish.flash', function(e){
+                        var fileStatuses = $(this).flash('getFileStatuses');
+                        if (fileStatuses && fileStatuses.length) {
+                            var fileStatus = $(this).flash('getFileStatus', fileStatuses[0].id);
+                            if (fileStatus && fileStatus.id === fileStatuses[0].id) {
+                            }
+                        }
+                        $.log('finish');
+                        $(this).flash('clear');
+                        fileStatuses = $(this).flash('getFileStatuses');
+                        if (fileStatuses && !fileStatuses.length) {
+                        }
+                    });
+
+                });
+
+    var jcrop_api, boundx, boundy;
+      
+      $('#target').Jcrop({
+        onChange: updatePreview,
+        onSelect: updatePreview,
+        aspectRatio: 1
+      },function(){
+        // Use the API to get the real image size
+        var bounds = this.getBounds();
+        boundx = bounds[0];
+        boundy = bounds[1];
+        // Store the API in the jcrop_api variable
+        jcrop_api = this;
+        jcrop_api.setSelect(getRandom());
+      });   
+   
+     function getRandom() {
+        var dim = jcrop_api.getBounds();
+        return [
+            Math.round(0.3 * dim[0]),
+            Math.round(0.6 * dim[1]),
+            Math.round(0.6 * dim[0]),
+            Math.round(0.3 * dim[1])
+        ];
+     };
+                
+      function updatePreview(c)
+      {
+        if (parseInt(c.w) > 0)
+        {
+          var rx = 100 / c.w;
+          var ry = 100 / c.h;
+
+          $('.preview').css({
+            width: Math.round(rx * boundx) + 'px',
+            height: Math.round(ry * boundy) + 'px',
+            marginLeft: '-' + Math.round(rx * c.x) + 'px',
+            marginTop: '-' + Math.round(ry * c.y) + 'px'
+          });
+            $('#x').val(c.x);
+            $('#y').val(c.y);
+            $('#w').val(c.w);
+            $('#h').val(c.h);
+        }
+      };    
+      
+      function checkCoords()
+        {
+            if (parseInt($('#w').val())) return true;
+            alert('Please select a crop region then press submit.');
+            return false;
+        };
+        
+
+        
+        //click cancel button to close the dialog
+        $('#comp-editimg-cancelbtn').click(function(){
+          $('#comp-editimg').dialog('close');
+        })
+            });
+        </script>
+
+    </body>
+
+</html>
+

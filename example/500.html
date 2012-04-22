@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+ 	<link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+  	<link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+    <style type="text/css">
+
+    </style>
+
+</head>
+<body>
+<div class="w952 error500" id="">
+ <div class="icon"> </div>
+ <div class="inf">
+   <p class="f20-title">对不起，由于系统繁忙，你浏览的页面暂时不可以，请稍后再试。</p>
+   <p class="f12">我要联系<span class="wwonline"><a href="#" data-alitalk="{id:'swainet'}" class="alitalk alitalk-on"></a></span> 报告问题</p>
+   <p class="f12"><a href="#" id="back">返回上一页...</a><p>
+ </div>
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $("#back").click(function(){
+      history.back();
+    });
+    $.use('web-alitalk', function() {
+      FE.util.alitalk($('a[data-alitalk]', '.wwonline'),{
+        onRemote: function(data) {
+            var el = $(this);
+            el.addClass("alitalk-on");
+            el.removeClass("alitalk-mb");
+            el.html("在线客服");
+        }
+      });
+    });        
+  });
+</script>
+
+</body>
+</html>

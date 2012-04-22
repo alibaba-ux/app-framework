@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+<!--more words-->
+<div >
+  <span id="msg"></span>  
+</div>
+<!--less words-->
+<div>  
+  <span id="msg2"></span>    
+</div>
+<script type="text/javascript">
+
+    jQuery(document).ready(function($) {
+       var str="曲线救国曲线救国曲线救国曲线救国曲线救国曲线救国曲线救国曲线救国曲线救国";
+       var strshow=str.cut(20,'...').toString();
+       $('#msg').html(strshow);
+       $('#msg').prop('title',str);
+       
+       str="曲线救国";
+       strshow=str.cut(20,'...').toString();
+       $('#msg2').html(strshow);
+       $('#msg2').prop('title',str);
+      
+    });
+
+</script>
+</body>
+</html>

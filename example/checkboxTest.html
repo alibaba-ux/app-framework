@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+ 	<link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <!--script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/jquery-1.7.1.min.js"></script-->  
+<style type="text/css">
+  .checkbox-test{
+    background-color:#fff6e7;
+    width:600px;
+    height:200px;
+    padding:10px 20px;
+    float:left;
+    margin-left:50px;
+  }
+   .checkbox-test h2{
+     background-color:#eef3f9;
+   }
+   .output{
+     width:350px;
+     height:50px;
+     line-height:50px;
+     border:1px dashed red;
+     padding:5px;
+    background-color:#FFF;
+   }
+ </style>
+
+</head>
+<body>
+<div id="test1" class="checkbox-test">
+<h2>checkbox checked attr issue in fdev4,works well on IE6/7</h2>
+  <input type="checkbox" id="tcb"/><span>Click me, to see the difference</span>
+  <div id="output" class="output">
+  </div>
+</div>
+<iframe src="checkboxforJquery.html" width="700px" height="240px" border="0"></iframe>
+
+<script type="text/javascript">
+
+   jQuery(document).ready(function($) {
+     $("#tcb").attr("checked",true);
+     $("#tcb").change(function(){
+       //checkbox.prop('checked'); 
+       $("#output").html('Checkbox checked attr value is: '+$(this).prop('checked'));
+     });
+  });
+  
+</script>
+
+</body>
+</html>

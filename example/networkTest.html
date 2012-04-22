@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+    <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/network.js"></script>
+    <style type="text/css">
+    </style>
+
+</head>
+<body>
+<button type="button" id="btn">Click Me to getName! getJSON method</button>
+<button type="button" id="ajax">Click Me to ajax</button>
+<div id="container">
+</div>
+<script type="text/javascript">
+/**
+ * Author: zhouquan.yezq
+ * time: 2/21/2012
+ * test the network function 
+ */
+    jQuery(document).ready(function($) {
+       /*$('#btn').click(function(){
+          ali.system.mode=0;
+          var myLog = ali.uxcore.util.getLogger("ali.ux.openplatform");
+          ali.network.getJSON({methodName:'getUserInf',url:ali.system.dummydataPath,success:function(data){
+            myLog.info(data);
+            alert(data.name2);
+          }})
+       });
+       
+       $('#getscript').click(function(){
+          var myLog = ali.uxcore.util.getLogger("ali.ux.openplatform2");
+          ali.system.mode=1;
+          ali.network.getScript({url:'http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js',success:function(data){
+            myLog.info(data);
+          }})
+       });       
+       
+       $('#ajax').click(function(){
+          var myLog = ali.uxcore.util.getLogger("ali.ux.openplatform3");
+          ali.system.mode=1;
+          ali.network.ajax({method:'get',url:'200.php',success:function(data){
+            myLog.info(data);
+            alert(data)
+          }})
+       });*/
+    ali.network.ajax({method:'get',url:'200.php',success:function(data){
+       console.log(data);
+    },error:function(xhr,status,error){
+      console.info(xhr.status);
+      console.info(xhr.readyState);
+      console.info(status);
+
+    }})
+      
+    });
+
+</script>
+</body>
+</html>

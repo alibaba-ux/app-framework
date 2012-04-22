@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+	<link rel="stylesheet" href="http://alibaba-60945/open/css/global.css"/>
+    <script type="text/javascript" src="../../lib/sea.js"></script>
+    <script type="text/javascript" src="../../lib/fdev-min.js"></script>
+    <script type="text/javascript" src="../../lib/system.js"></script>
+    <script type="text/javascript" src="../../lib/network.js"></script>
+    <script type="text/javascript" src="../../lib/logging.js"></script>
+    <script type="text/javascript" src="../../lib/pubsub.js"></script>
+    <script type="text/javascript" src="../../lib/class.js"></script>
+    <script type="text/javascript" src="../../lib/model.js"></script>
+    <script type="text/javascript" src="../../lib/observer.js"></script>
+    <script type="text/javascript" src="../../lib/form.js"></script>
+    <script type="text/javascript" src="./model.js"></script>
+    
+    <style type="text/css">
+      #dash{width:100%,height:100%;}
+      #dashBanner{
+        width:100%;
+        height:100px;
+        background-color:orange;
+        line-height:100px;
+        text-align:center;
+        font-size:30pt;
+      }
+      #locDiv{
+        width:100%;
+        height:20px;
+        line-height:20px;
+        margin:5px 0px;
+        border: 1px solid grey;
+        font-size:5pt;
+      }
+    </style>
+</head>
+<body>
+<div id="dash">
+    <div id="dashBanner">
+     I am Banner.
+    </div>
+
+    <div id="" class="menubar cirBorder">
+      <div class="menubtn f12" >
+         <a href="#"><span class="tx" data-type="app">应用管理</span><span class="iblock"></span></a>
+         <div class="boxshadow">
+           <a href="#" class="menuitm f12" data-type="list">应用列表不为空</a>
+           <a href="#" class="menuitm f12" data-type="empty">应用列表为空</a>
+           <a href="#" class="menuitm f12" data-type="createAPP">创建应用</a>
+         </div>
+      </div>
+      <span class="menubtnspliter">|</span>
+      <div class="menubtn f12" >
+         <a href="#"><span class="tx" data-type="devinfo">开发者资料维护</span></a>
+      </div>
+      <span class="menubtnspliter">|</span>
+       <div class="menubtn f12">
+         <a href="#"><span class="tx" data-type="others">其他</span></a>
+       </div>
+    </div>
+
+    <div id="locDiv" class="cirBorder">
+      <span>您的位置：开发者中心-></span><span id="curLoc">应用列表</span> <!--the curLoc , value change officely, so make it span-->
+    </div>
+
+    <div id="dashC">
+    </div>
+</div>
+<script type="text/javascript">
+ //seajs.use('./model');
+  jQuery(document).ready(function($) {
+    var myLog=ali.getLogger('dash.model');
+    var myModel=new ali.openpf.dash({$el:$("#dash")});
+  });
+</script>
+</body>
+</html>
