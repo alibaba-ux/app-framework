@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+	<link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+    <link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+    <style type="text/css">
+	  .holdplace{
+	    height:50px;
+		margin:10px 0px;
+	  }
+	  .navbar{
+        height:37px;
+	  }
+      .nav-left{
+        float: left;
+        width:14px;
+        height:37px;
+        background:url("http://img.china.alibaba.com/cms/upload/2012/819/053/350918_1255716180.png") no-repeat -3px -3px;
+      }
+      .nav-main{
+        float: left;
+        width:913px;
+        height:37px;
+        padding-left:6px;
+        position: relative;
+        background:url("http://img.china.alibaba.com/cms/upload/2012/819/053/350918_1255716180.png") repeat 0px 42px;
+      }
+      .nav-right{
+        float: left;
+        width:19px;
+        height:37px;
+        background:url("http://img.china.alibaba.com/cms/upload/2012/819/053/350918_1255716180.png") repeat 22px -3px;
+      }
+      .clear{
+        clear:both;
+      }
+
+      .navbar  li{
+        margin-top:6px;
+        width:114px;
+        height:31px;
+        padding-top:4px;
+      }
+      .navbar .content{
+        padding-left:20px;
+      }
+      .navbar  li.sel {
+        background:  url("http://img.china.alibaba.com/cms/upload/2012/809/053/350908_1255716180.png") no-repeat -3px -51px;
+      }
+       .navbar  li.dropdown {
+      }
+      .navbar li.sel a{
+        color:#fe5400;
+      }
+      .navbar li.sel a:hover{
+        color:#fe5400 !important; 
+	    text-decoration: none;
+      }
+      .navbar li.fr  {
+        text-align: right;
+      }
+      .navbar li.fr a{
+        color:#FFF;
+      }
+	  .navbar li.nosel a:hover{
+	    color:#FFF !important; 
+		text-decoration: none;
+	  }
+      .nav-submenu{
+        position:absolute;
+        width:141px;
+        top:36px;
+        left:6px;
+        border-left:2px solid #e2e2e2;
+        border-right:2px solid #e2e2e2;
+        border-bottom:2px solid #e2e2e2;
+        height:110px;
+        display: none;
+		background-color:#FFF;
+      }
+      .nav-submenu ul{
+        padding:0px;
+        margin:0px;
+        margin-left:22px;
+      }
+      .nav-submenu li{
+        line-height:21px;
+        height:21px;
+      }
+      .nav-submenu li a{
+        color:#444;
+      }
+	  
+	  .navbar li a{
+	    position:relative;
+	  }
+	  .b-nosel{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		width: 0;
+		height: 0;
+		border-width: 4px 4px;
+		border-style:solid;
+		font-size: 0;
+		line-height: 0;
+		-webkit-transition: -webkit-transform .2s ease-in;
+		-webkit-backface-visibility: hidden;
+		-moz-transition: -moz-transform .2s ease-in;
+		-o-transition: -o-transform .2s ease-in;
+		transition: transform .2s ease-in;
+		border-top-color:white;
+		border-bottom-color: transparent;
+		border-right-color:transparent;
+		border-left-color:transparent;
+		_border-bottom-color: tomato;
+		_border-right-color:tomato;
+		_border-left-color:tomato;
+        _filter:chroma(color=tomato)
+	}
+    </style>
+
+</head>
+<body>
+<div class="w952 holdplace"></div>
+<div class="w952 navbar">
+     <div class="nav-left"></div>
+     <div class="nav-main">
+        <ul>
+            <li class="fl sel"><a href="/index.html" class="navbar-btn" title="首页" >首页</a></li>
+            <li class="fl nosel"><a href="/doc/index.html" class="navbar-btn" title="文档中心">文档中心</a></li>
+            <li class="fr nosel" ><a href="http://style.china.alibaba.com/open/lib/modules/open/isv.createapp/">开发者中心</a></li>
+        </ul>
+     </div>
+     <div class="nav-right"></div>
+</div>
+<div class="w952 holdplace"></div>
+
+<div class="w952 navbar">
+     <div class="nav-left"></div>
+     <div class="nav-main">
+        <ul>
+            <li class="fl dropdown"><a href="javascript:void(0);" class="navbar-btn" title="首页" >应用管理 <b class="b-nosel"></b> </a></li>
+            <li class="fl nosel"><a href="/doc/index.html" class="navbar-btn" title="文档中心">模板管理</a></li>
+            <li class="fl nosel"><a href="/doc/index.html" class="navbar-btn" title="文档中心">开发者资料维护</a></li>
+        </ul>
+        <div class="nav-submenu">
+            <ul>
+                <li><a href="#">应用列表</a></li>
+                <li><a href="#">创建应用</a></li>
+                <li><a href="#">开发文档</a></li>
+            </ul>
+        </div>
+     </div>
+     <div class="nav-right"></div>
+</div>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function($) {
+       var mylog=$.Logger("navbar");
+	   $.Logger.setLogLevel(4);
+	   //$('.dropdown b').addClass('b-nosel');
+	   $('.dropdown').mouseenter(function(){
+          setTimeout(function(){
+              $('.nav-submenu').show();
+			  $('.dropdown').addClass('sel');
+
+          },100);
+       });
+
+       $('.dropdown').mouseleave(function(){
+          setTimeout(function(){
+		     mylog.log("dropdown-mouseleave:onsubmenu "+$('.dropdown').data('onsubmenu'))
+            if(!$('.dropdown').data('onsubmenu')){
+              $('.nav-submenu').hide();
+			  $('.dropdown').removeClass('sel');
+              $('.dropdown').data('onsubmenu',0);
+            }
+           },100);
+       });
+
+       $('.nav-submenu').mouseenter(function(){
+	     mylog.log("nav-submenu:mouseenter "+$('.dropdown').data('onsubmenu'));
+         $('.dropdown').data('onsubmenu',1);
+		 mylog.log("nav-submenu:mouseenter "+$('.dropdown').data('onsubmenu'));
+       });
+
+
+       $('.nav-submenu').mouseleave(function(){
+	     mylog.log("nav-submenu-mouseleave");
+         $('.dropdown').data('onsubmenu',0);
+         $('.nav-submenu').hide();
+		 $('.dropdown').removeClass('sel');
+       });
+       
+    });
+</script>
+</body>
+</html>
