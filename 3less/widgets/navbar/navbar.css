@@ -1,0 +1,18 @@
+.nav-bar{height:37px;}
+.nav-bar .nav-left{float:left;width:14px;height:37px;background:url("http://img.china.alibaba.com/cms/upload/2012/819/053/350918_1255716180.png") no-repeat -3px -3px;}
+.nav-bar .nav-main{float:left;width:913px;height:37px;padding-left:6px;position:relative;background:url("http://img.china.alibaba.com/cms/upload/2012/819/053/350918_1255716180.png") repeat 0px 42px;}
+.nav-bar .nav-right{float:left;width:19px;height:37px;background:url("http://img.china.alibaba.com/cms/upload/2012/819/053/350918_1255716180.png") repeat 22px -3px;}
+.nav-bar li{margin-top:6px;width:114px;height:31px;padding-top:4px;}
+.nav-bar li .sel{background:url("http://img.china.alibaba.com/cms/upload/2012/809/053/350908_1255716180.png") no-repeat -3px -51px;}
+.nav-bar li .sel a{color:#fe5400;}
+.nav-bar li .sel a:hover{color:#fe5400 !important;text-decoration:none;}
+.nav-bar li .longsel{background:url("http://img.china.alibaba.com/cms/upload/2012/236/073/370632_1255716180.png") no-repeat -3px -51px;width:172px;text-align:center;}
+.nav-bar li .fr{text-align:right;}
+.nav-bar li .fr a{color:#FFF;}
+.nav-bar li .nosel a:hover{color:#FFF !important;text-decoration:none;}
+.nav-bar li a{position:relative;}
+.nav-bar .nav-submenu{position:absolute;width:141px;top:36px;left:6px;border-left:2px solid #e2e2e2;border-right:2px solid #e2e2e2;border-bottom:2px solid #e2e2e2;height:110px;display:none;background-color:#FFF;}
+.nav-bar .nav-submenu ul{padding:0px;margin:0px;margin-left:22px;}
+.nav-bar .nav-submenu li{line-height:21px;height:21px;}
+.nav-bar .nav-submenu li a{color:#444;}
+.nav-bar .b-nosel{position:absolute;right:10px;top:10px;width:0;height:0;border-width:4px 4px;border-style:solid;font-size:0;line-height:0;-webkit-transition:-webkit-transform 0.2s ease-in;-webkit-backface-visibility:hidden;-moz-transition:-moz-transform 0.2s ease-in;-o-transition:-o-transform 0.2s ease-in;transition:transform 0.2s ease-in;border-top-color:white;border-bottom-color:transparent;border-right-color:transparent;border-left-color:transparent;_border-bottom-color:tomato;_border-right-color:tomato;_border-left-color:tomato;_filter:chroma(color=#ff6347);}

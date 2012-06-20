@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+	<link rel="stylesheet" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css"/>
+    <link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css"/>
+    <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>
+	<script type="text/javascript" src="navbar.css"></script>
+    <style type="text/css">
+	  .holdplace{
+	    height:50px;
+		margin:10px 0px;
+	  }
+    </style>
+
+</head>
+<body>
+<div class="w952 holdplace"></div>
+<div class="w952 navbar">
+     <div class="nav-left"></div>
+     <div class="nav-main">
+        <ul>
+            <li class="fl sel"><a href="/index.html" class="navbar-btn" title="首页" >首页</a></li>
+            <li class="fl nosel"><a href="/doc/index.html" class="navbar-btn" title="文档中心">文档中心</a></li>
+            <li class="fr nosel" ><a href="http://style.china.alibaba.com/open/lib/modules/open/isv.createapp/">开发者中心</a></li>
+        </ul>
+     </div>
+     <div class="nav-right"></div>
+</div>
+<div class="w952 holdplace"></div>
+
+<div class="w952 navbar">
+     <div class="nav-left"></div>
+     <div class="nav-main">
+        <ul>
+            <li class="fl dropdown"><a href="javascript:void(0);" class="navbar-btn" title="首页" >应用管理 <b class="b-nosel"></b> </a></li>
+            <li class="fl nosel"><a href="/doc/index.html" class="navbar-btn" title="文档中心">模板管理</a></li>
+            <li class="fl longsel"><a href="/doc/index.html" class="navbar-btn" title="文档中心">开发者资料维护</a></li>
+        </ul>
+        <div class="nav-submenu">
+            <ul>
+                <li><a href="#">应用列表</a></li>
+                <li><a href="#">创建应用</a></li>
+                <li><a href="#">开发文档</a></li>
+            </ul>
+        </div>
+     </div>
+     <div class="nav-right"></div>
+</div>
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function($) {
+       var mylog=$.Logger("navbar");
+	   $.Logger.setLogLevel(4);
+	   //$('.dropdown b').addClass('b-nosel');
+	   $('.dropdown').mouseenter(function(){
+          setTimeout(function(){
+              $('.nav-submenu').show();
+			  $('.dropdown').addClass('sel');
+
+          },100);
+       });
+
+       $('.dropdown').mouseleave(function(){
+          setTimeout(function(){
+		     mylog.log("dropdown-mouseleave:onsubmenu "+$('.dropdown').data('onsubmenu'))
+            if(!$('.dropdown').data('onsubmenu')){
+              $('.nav-submenu').hide();
+			  $('.dropdown').removeClass('sel');
+              $('.dropdown').data('onsubmenu',0);
+            }
+           },100);
+       });
+
+       $('.nav-submenu').mouseenter(function(){
+	     mylog.log("nav-submenu:mouseenter "+$('.dropdown').data('onsubmenu'));
+         $('.dropdown').data('onsubmenu',1);
+		 mylog.log("nav-submenu:mouseenter "+$('.dropdown').data('onsubmenu'));
+       });
+
+
+       $('.nav-submenu').mouseleave(function(){
+	     mylog.log("nav-submenu-mouseleave");
+         $('.dropdown').data('onsubmenu',0);
+         $('.nav-submenu').hide();
+		 $('.dropdown').removeClass('sel');
+       });
+       
+    });
+</script>
+</body>
+</html>

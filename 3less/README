@@ -1,0 +1,57 @@
+目的：
+	想通过Less 工具，构建前端的css 编译平台，主要思路是：
+
+	全站的base.less +全站公用的widget Less
+	各个项目的base.less+ 项目自己的widget Less+ 模块Less
+
+解决问题：
+	1：组件化，公用的组件，内部的css是一样的，只是namespace不一样
+	2：让css的书写更具编程化，模块化，让后端同学更容易上手
+
+
+最终想达到的目的：
+	1: 项目开始，开发人员到Less builder平台的网站，选择自己将会用到的组件，然后
+	   给予相应的命名空间，点击build，这样对应组件的Less就打包，然后编译成css，供用户
+	   下载使用
+	   
+	2：对于每个组件，都用Less文件，css文件及demo文件组成，开发人员在碰到问题时，可以查阅
+	   相应的Demo
+	   
+	3： 对于每个page或module，都会有独立的less，模块化更清晰
+
+	4： 通过一键脚本，来编译，压缩最终的css文件，对于每个项目来说。
+	   
+   
+思考：如何简化开发？
+
+   写个前端的module解析引擎，对于每个组件，前端或后端开发人员，只需要写入对于的组件class名后，
+   解析引擎后把对于的部分，替换成该组件的html片段(html+js+css).简化开发人员的代码，交由代码来完成。
+   
+   如果:
+    <div less-type="comp-alibar"></div>
+	
+	编译完后为：
+	<div id="alibar" class="thirdalibar">
+     <div class="w952">
+        <ul class="lalibar_menu nologin" style="display: block; ">
+          <li>欢迎您来到阿里巴巴</li>
+          <li><a href="https://loginchina.alibaba.com/member/signin.htm?done=http%3A%2F%2Fopen.china.alibaba.com%2F" title="登录">登录</a></li>
+          <li>|</li>
+          <li><a href="http://china.alibaba.com/member/join/common_join.htm?done=http%3A%2F%2Fopen.china.alibaba.com%2F" title="免费注册">免费注册</a></li>
+        </ul>
+        <ul class="lalibar_menu logined" style="display: none; ">
+          <li>欢迎您,</li>
+          <li><span id="loginid"></span></li>
+          <li>|</li>
+          <li><a href="https://loginchina.alibaba.com/member/signout.htm" data-trace="cn_alibar_quit" title="退出" rel="nofollow">退出</a></li>
+        </ul>
+        <ul class="ralibar_menu">
+          <li><a href="http://1688.com" title="1688" target="_blank">1688.com</a></li>
+          <li>|</li>
+          <li><a href="http://view.china.alibaba.com/cms/itbu/app/index.html" target="_blank" title="应用市场">应用市场</a></li>
+          <li>|</li>
+          <li><a href="http://china.alibaba.com/member/myalibaba.htm" target="_blank" title="我的阿里" data-trace="cn_alibar_myali" rel="nofollow">我的阿里</a></li>
+        </ul>
+     </div>
+   </div>
+   当然这块不是这么简单。data,event等的交互，需要进一步思考。
