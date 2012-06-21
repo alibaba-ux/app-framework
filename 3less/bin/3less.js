@@ -9,18 +9,30 @@ var less = require('../lib/less');
 
 //USER CONFIGURATION
 var requireLess=['../base.less',
-                 //'../widgets/form/form.less',
-				 //'../widgets/singlestack/singlestack.less',
-				 '../widgets/navbar/navbar.less',
+
+                 '../widgets/form/form.less',
 				 '../widgets/alibar/alibar.less',
+				 '../widgets/navbar/navbar.less',
+				 '../widgets/appprice/appprice.less',
+				 '../widgets/appstate/appstate.less',
+				 '../widgets/bannertip/bannertip.less',
+				 '../widgets/comp-uploadimg/comp-uploadimg.less',
+				 '../widgets/crumb/crumb.less',
 				 '../widgets/thirdbanner/thirdbanner.less',
+				 
 				 '../modules/common.less',
 				 '../modules/welcomepage.less',
+				 '../modules/applist.less',
+				 '../modules/createapp.less',
+				 '../modules/devregister.less',
+				 '../modules/doc.less',
+				 '../modules/editappinf.less',
+				 
 				 '../main.less'];
 
 var config={
   folder:'../output',
-  cssname:'core.css'
+  cssname:'global.css'
 }
 
 var readfile=function() {

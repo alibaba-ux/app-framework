@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+  <link rel="stylesheet" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css" />
+  <link rel="stylesheet" href="appprice.css" />
+  <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+  <script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js"></script>  
+<style type="text/css">
+ </style>
+
+</head>
+<body>
+
+<div class="comp-app-price">
+   <ul class="ul1">
+     <li >
+           <div><label>原价: <span class="comp-ff-required">*</span></label> <input type="text" value="0" id="price"/> 元/1个月 </div>
+           <div class="comp-error-blk" style="margin-left:42px;"> <span class="error">请填写原价</span> </div>
+     </li>
+      <li ><label>售价: <span class="comp-ff-required">&nbsp;&nbsp;</span></label> <input type="checkbox"/>在原价的基础上折扣销售
+         <div id="discount"></div>
+      </li>
+   </ul>
+</div>
+
+<script type="text/javascript">
+
+   jQuery(document).ready(function($) {
+
+    var pagebus=ali.pubsub;
+
+   /*****************************************************/
+    ali.defineClass("ali.openpf.price",ali.model,{
+       events: {
+          'change #price': 'doPriceChange',
+          'change input[type=checkbox]': 'doCheck'
+       },
+       initHook: function() {
+          var price=this.$("#price").val()-0;
+          this.priceTemplate(price);
+       },
+       doPriceChange: function() {
+          if(this.$("#price").val()==""){
+            this.$(".comp-error-blk").show();
+            return;
+          }
+          var price=this.$("#price").val()-0;
+          var li=this.$("#price").parents("li")[0];
+          if(this.doV(price)) {
+             jQuery(li).find(".comp-error-blk").hide();
+              pagebus.pub("ali.openpf.price.change",price);
+          }else{
+             jQuery(li).find(".comp-error-blk").show();
+          }
+       },
+       doCheck: function(e) {
+           if(this.$(e.target).prop('checked')) {
+             pagebus.pub("ali.openpf.price.mode.change",1);
+           }else {
+             pagebus.pub("ali.openpf.price.mode.change",0);
+           }
+       },
+       isPositiveNumber: function(v) {
+          return typeof v=== "number" && v>=0;
+       },
+       doV: function(v){
+          try{
+            return /^(([1-9]{0,1}[0-9]{0,5})|([1-9]{0,1}[0-9]{0,5}\.[0-9]{0,1}[1-9]{0,1}))$/.test(v);
+          }catch(e){
+             return false;
+          }
+       },
+       priceTemplate: function(p) {
+         var unit=[1,3,6,12];
+         var f=[];
+         var tpl=['<ul class="ul2" data-unit={unit}>',
+                  '<li class="viewEl">{unitstr}<strong id="nprice" class="price">{price}</strong>元 (<div class="note">原价<strong id="oprice" class="">{price}</strong>元 你省了<strong id="cprice" class="price ">0</strong>元</div>)</li>',
+                  '<li class="editEl"><div>{unitstr}<span ><input type="text"  value="{price}" id="nprice"/> 元</span> (<div class="note">原价<strong class=" original" id="oprice">{price}</strong>元 你省了<strong id="cprice" class="price cupon">0</strong>元</div>) </div><div class="comp-error-blk"> <span class="error">折扣价不得高于原价且为正数</span> </div></li>',
+               '</ul>'].join('');
+         var process=function(unit, price) {
+            var _tpl=tpl;
+            var u=unit;
+            switch (unit)
+            {
+              case 6:
+                unit='半&nbsp;&nbsp;年';
+                break;
+              case 12:
+                unit='1 &nbsp;&nbsp;年';
+                break;
+              default:
+                unit=unit+"个月";
+
+            }
+            _tpl= _tpl.replace(/{unitstr}/g,unit);
+            _tpl=_tpl.replace(/{price}/g,price);
+            _tpl=_tpl.replace(/{unit}/g,u);
+            return _tpl;
+         };
+
+         $.each(unit,function(index, e) {
+            f.push(process(e,e*p));
+         });
+
+         f.push("<div class='clear'></div>");
+         this.$('#discount').html(f.join(''));
+       }
+    });
+    
+   
+
+    ali.defineClass("ali.openpf.discount",ali.model,{
+       events: {
+         'change .editEl input[type=text]': 'doChange'
+       },
+
+       doChange: function(e) {
+        var li=this.$(e.target).parent().parent().parent();
+        var curPrice=this.$(e.target).val()-0;
+        var originalPrice=li.find("#oprice").html();
+        var cupon=originalPrice-curPrice;
+         if(cupon.toString().indexOf('.')!=-1){
+            cupon=(new Number(cupon)).toFixed(2);
+         }
+        var eblk=li.find(".comp-error-blk");
+        if(this.doV(curPrice) && this.doV(cupon)){
+          li.find(".cupon").html(cupon);
+          eblk.hide();
+        }else{
+          eblk.show();
+          this.$(e.target).focus();
+        }
+       },
+
+       initHook: function() {
+         var me=this;
+          pagebus.sub("ali.openpf.price.change",function() {
+            var args = jQuery.makeArray(arguments);
+            var p=(me.$el.data('unit')-0)*(args[0]-0);
+            if(p.toString().indexOf('.')!=-1){
+              p=(new Number(p)).toFixed(2);
+            }
+            if(me.mode==1){
+              me.setEditData(p,me.$('.editEl #nprice').val());
+              me.setViewData(p,p);
+            }else if( me.mode==0){
+              me.setEditData(p,me.$('.editEl #nprice').val());
+              me.setViewData(p,p);
+            }else{
+              me.setData(p,p);
+            }
+          });
+          pagebus.sub("ali.openpf.price.mode.change",function() {
+            var args = jQuery.makeArray(arguments);
+            me.mode=args[0];
+            me.setMode(args[0]);
+          });
+       },
+       doV: function(v){//小数点后两位的正整数，小数点前面最高为6位
+          try{
+            return /^(([1-9]{0,1}[0-9]{0,5})|([1-9]{0,1}[0-9]{0,5}\.[0-9]{1}[0-9]{0,1}))$/.test(v);
+          }catch(e){
+             return false;
+          }
+       },
+
+       isPositiveNumber: function(v) {
+          return typeof v=== "number" && v>=0;
+       },
+       setData: function(op,np) {
+          this.setViewData(op,np);
+          this.setEditData(op,np)
+       },
+       setViewData: function(op,np) {
+           this.$('.viewEl #nprice').html(np);
+           this.$('.viewEl #oprice').html(op);
+           var cupon=op-np;
+            if(cupon.toString().indexOf('.')!=-1){
+              cupon=(new Number(cupon)).toFixed(2);
+            }
+           this.$('.viewEl #cprice').html(cupon);
+       },
+       setEditData: function(op,np) {
+          this.$('.editEl #nprice').val(np);
+          this.$('.editEl #oprice').html(op);
+          var cupon=op-np;
+            if(cupon.toString().indexOf('.')!=-1){
+              cupon=(new Number(cupon)).toFixed(2);
+           }
+          this.$('.editEl #cprice').html(cupon);
+          var eblk=this.$(".comp-error-blk");
+          if(this.doV(cupon)){
+            this.$(".cupon").html(cupon);
+            eblk.hide();
+          }else{
+            eblk.show();
+          }
+       },
+       setMode: function(mode) {
+          if(mode==1){
+            this.$('.editEl').show();
+            this.$('.viewEl').hide();
+          }else{
+            this.$('.editEl').hide();
+            this.$('.viewEl').show();
+          }
+       }
+    });
+
+   new ali.openpf.price({$el:$('.comp-app-price')});
+   $('.ul2').each(function(index,e) {
+      new ali.openpf.discount({$el:$(e)});
+   })
+         
+  });
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+.comp-app-price{width:415px;font-size:12px;float:left;margin-left:120px;_margin-left:60px;color:#595959;}.comp-app-price ul li{line-height:10px;min-height:10px;}
+.comp-app-price .ul1{margin:8px;}.comp-app-price .ul1 li{line-height:21px;}
+.comp-app-price .ul2{margin-left:45px;}.comp-app-price .ul2 li{line-height:21px;min-height:10px;}
+.comp-app-price .viewEl{display:none;}
+.comp-app-price input[type=text]{width:60px;}
+.comp-app-price .price{color:#ff6800;}
+.comp-app-price strong{margin:0px 0px 0px 5px;}
+.comp-app-price .viewEl input{margin:0px 0px 0px 5px;}
+.comp-app-price .note{display:inline;color:#a8a8a8;font-size:12px;}
+.comp-app-price li{list-style:none;width:100%;float:left;}
+.comp-app-price .comp-error-blk{float:left;margin-left:31px;margin-top:3px;margin-bottom:3px;display:none;}
+.comp-app-price .comp-error-blk .error{border:1px solid #FF8080;float:left;background:url(http://img.china.alibaba.com/cms/upload/2012/089/682/286980_1255716180.png) no-repeat 3px 3px;padding:2px 10px 2px 23px;line-height:18px;}

@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="gbk" />
+	<title>阿里巴巴开放平台</title>
+
+	<meta name="keywords" content="阿里巴巴开放平台，应用列表">
+	<meta name="description" content="阿里巴巴开放平台应用列表的展示">
+
+
+	<link rel="stylesheet" type="text/css" href="http://style.china.alibaba.com/css/lib/fdev-v4/core/fdev-float.css?v=2012062109"></link>
+	<link rel="stylesheet" type="text/css" href="http://style.china.alibaba.com/app/bp/css/openpf/global.css?v=2012062109"></link>
+	<link rel="stylesheet" type="text/css" href="http://style.china.alibaba.com/css/lib/fdev-v4/widget/ui/jqgrid-min.css?v=2012062109"></link>
+	<script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js?v=2012062109"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/core.js?v=2012062109"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/grid.locale-en.js?v=2012062109"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/lib/jqgrid-min.js?v=2012062109"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/src/open/common/header.js?v=2012062109"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/src/open/common/navbar.js?v=2012062109"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/src/open/app/app.js?v=2012062109"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/widget/web/valid-min.js?v=2012062109"></script>
+
+</head>
+<body>
+<input type="hidden" id="staticUrl" name="staticUrl" value="http://style.china.alibaba.com/" />
+  <div id="alibar" class="thirdalibar">
+     <div class="w952">
+        <ul class="lalibar_menu nologin">
+          <li>欢迎您来到阿里巴巴</li>
+          <li><a href="https://loginchina.alibaba.com/member/signin.htm?done=http%3A%2F%2Fopen.china.alibaba.com%2F" title="登录">登录</a></li>
+          <li>|</li>
+          <li><a href="http://china.alibaba.com/member/join/common_join.htm?done=http%3A%2F%2Fopen.china.alibaba.com%2F" title="免费注册">免费注册</a></li>
+        </ul>
+        <ul class="lalibar_menu logined">
+          <li>欢迎您,</li>
+          <li><span id="loginid">亲</span></li>
+          <li>|</li>
+          <li><a href="https://loginchina.alibaba.com/member/signout.htm" data-trace="cn_alibar_quit" title="退出" rel="nofollow">退出</a></li>
+        </ul>
+        <ul class="ralibar_menu">
+          <li><a href="http://1688.com" title="1688" target="_blank">1688.com</a></li>
+          <li>|</li>
+          <li><a href="http://view.china.alibaba.com/cms/itbu/app/index.html" target="_blank" title="应用市场">应用市场</a></li>
+          <li>|</li>
+          <li><a href="http://china.alibaba.com/member/myalibaba.htm" target="_blank" title="我的阿里" data-trace="cn_alibar_myali" rel="nofollow">我的阿里</a></li>
+        </ul>
+     </div>
+  </div>
+  <div class="w952 thirdbanner">
+    <!--<a href="/index.html" title="开放平台"><img src="http://img.china.alibaba.com/cms/upload/2012/992/692/296299_1255716180.png?001"/></a>-->
+	<h1>
+        <a title="阿里巴巴" href="http://www.1688.com/" class="main-logo-v4"><img width="153" height="37" alt="阿里巴巴" src="http://img.china.alibaba.com/cms/upload/2012/062/553/355260_1255716180.png"></a>
+        <a class="sub-logo-v4" title="开发者中心" href="/app/index.htm">开发者中心</a>
+     </h1>
+  </div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+       var inst=new ali.openpf.header({$el: $('#alibar')});
+       inst.initNavTabs();
+       inst.initView();
+    });
+</script>
+<div class="w952 navbar">
+     <div class="nav-left"></div>
+     <div class="nav-main">
+        <ul>
+            <li class="fl dropdown"><a href="javascript:void(0);" class="navbar-btn" title="应用管理" >应用管理 <b class="b-nosel"></b> </a></li>
+            <li class="fl nosel"><a href="http://jz.china.alibaba.com/template/designer/my.htm" class="navbar-btn" title="模板管理">模板管理</a></li>
+            <li class="fl nosel"><a href="http://open.china.alibaba.com:8080/developer/edit.htm" class="navbar-btn" title="开发者资料维护">开发者资料维护</a></li>
+        </ul>
+        <div class="nav-submenu">
+            <ul>
+                <li> <a href="http://open.china.alibaba.com:8080/app/index.htm">应用列表</a></li>
+                <li><a href="http://open.china.alibaba.com:8080/app/create.htm">创建应用</a></li>
+                <li><a href="/doc/index.html" title="开发文档">开发文档</a></li>
+            </ul>
+        </div>
+     </div>
+     <div class="nav-right"></div>
+</div>
+<div class="main-container layout">
+  
+
+
+
+	<script type="text/javascript" src="http://style.china.alibaba.com/app/bp/js/openpf/src/open/app/applist.js?v=2012062109"></script>
+	<div class="rheader f12">
+        <p>您的位置：<a href="http://open.china.alibaba.com:8080/app/index.htm">开发者中心</a>-> <a href="http://open.china.alibaba.com:8080/app/index.htm">应用列表</a></p>
+		<span class="f12"><a href="http://open.china.alibaba.com:8080/app/create.htm" style="color:#333333 !important;">创建应用</a></span>
+	</div>
+    <div class="applist_container">
+	    <div class="applist_globalmsg" id="remind-msg" style="z-index:10000;display:none;">
+	    	<div class="comp-ff-big-success" id="msg-level">
+				<p><span class="info">操作成功</span></p>
+				<p></p>
+			</div>
+	    </div>
+		<div class="applist-createblk" id="no-app" style="display:none;">
+	    	<div class="comp-ff-big-attentions">
+				<p><span>您还未创建应用，<a href="http://open.china.alibaba.com:8080/app/create.htm">请创建</a></span></p>
+				<p></p>
+			</div>
+	    </div>
+		<div id="grid-container" style="border:1px">
+			<table id="mygrid" style="overflow-y:hidden;">
+			</table>
+		</div>
+    </div>
+	<input id="list_url" type="hidden" name="list_url" value="http://open.china.alibaba.com:8080/app/data/index.do"/>
+<script type="text/javascript">
+  // 查看app详情的url
+  function detail_url_block(appId){
+    var url;
+    url  = detail_url(appId);
+    return '<div class="f12"><a href="' + url + '"><span class="tx appinfview">查看</span></a></div>';  
+  }
+   // 查看 app详情rul
+  function detail_url(appId){
+    var base_url, url;
+    base_url = "http://open.china.alibaba.com:8080/app/detail.htm";
+    url = base_url + '?id=' + appId;
+    return url;
+  }
+
+  // 申请上架app url
+  function apply_url_block(appId){
+    var base_url,url;
+    base_url = "http://open.china.alibaba.com:8080/app/edit.htm";
+    url = base_url + '?appid=' + appId ;
+    return '<div id="applyOnShow" class=" f12"><a href="' + url + '"><span class="tx">申请上架</span></a></div>';  
+  }
+  // 修改app url
+  function modification_url_block(appId){
+    var base_url,url;
+    base_url = "http://open.china.alibaba.com:8080/app/edit.htm";
+    url = base_url + '?appid=' + appId ;
+    return '<div class=" f12"><a href="' + url + '"><span class="tx">修改</span></a></div>';  
+  }
+  // 删除app url
+  function deletion_url_block(appId){
+  	var base_url,url;
+	base_url = "http://open.china.alibaba.com:8080/app/delete.do";
+	url = base_url + '?id=' + appId + '&' + token_param();
+    return '<div class=" f12"><a href="#"><span class="tx appdelete" data-url="' + url + '">删除</span></a></div>';  
+  }
+  // 查看审核失败原因
+  function find_error_url_block(requestId){
+  	var base_url,url;
+	base_url = "http://open.china.alibaba.com:8080/app/apply_reason.do";
+	url = base_url + '?requestId=' + requestId;
+    return '<div class=" f12"  id="applyFailMsg"><a href="#"><span class="applyReason tx" data-url="' + url + '">查看失败原因</span></a></div>';  
+  }
+  // split
+  function split(){
+    return '<span class="menubtnspliter">|</span>';
+  }
+  function token_param(){
+    return '_csrf_token'+'='+'LDv5dcr0zKIG21jlMJ3AbE';
+  }
+  
+jQuery(document).ready(function($){
+	jQuery.event.add(jQuery("#mygrid")[0],'jqGridAfterLoadComplete',function(){
+        jQuery("img").each(function(index, el){
+        var img = $(el);
+        img.error(function(){
+          var src = 'http://img.china.alibaba.com/cms/upload/2012/130/603/306031_1255716180.png';
+          $(el).attr("src", src);
+          $(el).unbind("error");
+        });
+      });         
+    },null,null);
+});
+</script>
+
+</div>
+<div style="display:none;width:400px;height:100px;border:1px solid #b2b2b2;" id="applistDlg">
+	<div id="dheader" class="dheader f12"><p id="" style="float:left;line-height:30px;">信息</p><span id="closedlgIcon">X</span></div>
+	<div class="dbody">
+		<p id="dbody">请确认，一旦删除，将不可恢复。</p>
+		<div class="dbottom">
+			<button id="cancelbtn">取消</button> 
+			<button id="confirmbtn">确认</button>
+		</div>
+	</div>
+</div>
+</div>
+<link rel="stylesheet" href="http://style.china.alibaba.com/css/sys/universal/footer/standard-v0.css"> 
+<div id="footer"> 
+            <div id="footer-v0"> 
+                <div class="footer-container"> 
+                    <div class="ali-pages"> 
+                        <p id="copyright">阿里巴巴版权所有 1999-2012</p> 
+                        <ul> 
+                            <li><a href="http://info.china.alibaba.com/biznews/pages/alihome/js_zzq.html" target="_self" title="著作权与商标声明">著作权与商标声明</a> |</li> 
+                            <li><a href="http://info.china.alibaba.com/biznews/pages/alihome/js_fl.html" target="_self" title="法律声明">法律声明</a> |</li> 
+                            <li><a href="http://info.china.alibaba.com/biznews/pages/alihome/js_fw.html" target="_self" title="服务条款">服务条款</a> |</li> 
+                            <li><a href="http://info.china.alibaba.com/biznews/pages/alihome/js_ys.html" target="_self" title="隐私声明">隐私声明</a> |</li> 
+                            <li><a href="http://page.china.alibaba.com/shtml/about/ali_china8.shtml" target="_self" title="联系我们">联系我们</a> |</li> 
+                            <li><a href="http://page.china.alibaba.com/system/sitemap.html" target="_self" title="网站地图">网站地图</a> |</li> 
+                            <li><a href="http://page.china.alibaba.com/shtml/promotion/ued/ued_1.shtml" target="_self" title="用户体验计划">用户体验计划</a></li> 
+                        </ul> 
+                    </div> 
+                    <div class="ali-group"> 
+                        <dl> 
+                            <dt><a href="http://page.china.alibaba.com/shtml/about/ali_group1.shtml" target="_self" title="阿里巴巴集团">阿里巴巴集团</a>:</dt> 
+                            <dd> 
+                                阿里巴巴网络 -
+                                <a href="http://china.alibaba.com/" target="_self" title="中国站">中国站</a> 
+                                <a href="http://www.alibaba.com/" target="_blank" title="国际站">国际站</a> 
+                                <a href="http://www.aliexpress.com/" target="_blank" title="全球速卖通">全球速卖通</a> 
+                                <a href="http://www.alibaba.co.jp/" target="_blank" title="日文站">日文站</a> |
+                            </dd> 
+                            <dd><a href="http://www.net.cn/" target="_blank" title="中国万网">中国万网</a> |</dd> 
+                            <dd><a href="http://www.ydt35.com/" target="_blank" title="一达通">一达通</a> |</dd> 
+                            <dd><a href="http://www.taobao.com/" target="_blank" title="淘宝网">淘宝网</a> |</dd> 
+                            <dd><a href="http://www.tmall.com/" target="_blank" title="天猫">天猫</a> |</dd> 
+                            <dd><a href="http://www.etao.com/" target="_blank" title="一淘">一淘</a> |</dd> 
+                            <dd><a href="http://www.yahoo.com.cn/" target="_blank" title="中国雅虎">中国雅虎</a> |</dd> 
+                            <dd><a href="http://www.alipay.com/" target="_blank" title="支付宝">支付宝</a> |</dd> 
+                            <dd><a href="http://www.aliyun.com/" target="_blank" title="阿里云">阿里云</a> |</dd> 
+                            <dd><a href="http://www.aliresearch.com/" target="_blank" title="阿里研究中心">阿里研究中心</a></dd> 
+                        </dl> 
+                    </div> 
+                </div> 
+            </div> 
+  </div> 
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+	   $('.dropdown').mouseenter(function(){
+          setTimeout(function(){
+              $('.nav-submenu').show();
+			  $('.dropdown').addClass('sel');
+
+          },100);
+       });
+
+       $('.dropdown').mouseleave(function(){
+          setTimeout(function(){
+            if(!$('.dropdown').data('onsubmenu')){
+              $('.nav-submenu').hide();
+			  $('.dropdown').removeClass('sel');
+              $('.dropdown').data('onsubmenu',0);
+            }
+           },100);
+       });
+
+       $('.nav-submenu').mouseenter(function(){
+         $('.dropdown').data('onsubmenu',1);
+       });
+
+       $('.nav-submenu').mouseleave(function(){
+         $('.dropdown').data('onsubmenu',0);
+         $('.nav-submenu').hide();
+		 $('.dropdown').removeClass('sel');
+       });
+    });
+</script>
+</body>
+</html>
