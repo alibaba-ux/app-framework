@@ -19,7 +19,7 @@ var requireLess=['../base.less',
 				 '../widgets/comp-uploadimg/comp-uploadimg.less',
 				 '../widgets/crumb/crumb.less',
 				 '../widgets/thirdbanner/thirdbanner.less',
-				  '../widgets/tip/tip.less',
+				'../widgets/tip/tip.less',
 				 '../modules/common.less',
 				 '../modules/welcomepage.less',
 				 '../modules/applist.less',
@@ -27,7 +27,7 @@ var requireLess=['../base.less',
 				 '../modules/devregister.less',
 				 '../modules/doc.less',
 				 '../modules/editappinf.less',
-				 
+
 				 '../main.less'];
 
 var config={

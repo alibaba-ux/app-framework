@@ -1,3 +1,25 @@
-.thirdalibar{height:28px;border-bottom:1px solid #DCDCDC;width:100%;font-size:12px;background:url(http://img.china.alibaba.com/cms/upload/2012/820/603/306028_1255716180.png) repeat 0px 0px;}.thirdalibar .lalibar_menu{float:left;}
-.thirdalibar .ralibar_menu{float:right;}
-.thirdalibar li{float:left;margin:4px;}
+.thirdalibar {
+  height: 28px;
+  border-bottom: 1px solid #DCDCDC;
+  width: 100%;
+  font-size: 12px;
+  background: url(http://img.china.alibaba.com/cms/upload/2012/820/603/306028_1255716180.png) repeat 0px 0px;
+}
+.thirdalibar .lalibar_menu {
+  float: left;
+}
+.thirdalibar .ralibar_menu {
+  float: right;
+}
+.thirdalibar li {
+  float: left;
+  margin: 4px;
+}
+.thirdalibar li a,
+.thirdalibar li a:visited {
+  color: #666 !important;
+  text-decoration: none;
+}
+.thirdalibar .logined {
+  display: none;
+}
