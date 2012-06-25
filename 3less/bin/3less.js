@@ -19,7 +19,7 @@ var requireLess=['../base.less',
 				 '../widgets/comp-uploadimg/comp-uploadimg.less',
 				 '../widgets/crumb/crumb.less',
 				 '../widgets/thirdbanner/thirdbanner.less',
-				 
+				  '../widgets/tip/tip.less',
 				 '../modules/common.less',
 				 '../modules/welcomepage.less',
 				 '../modules/applist.less',
