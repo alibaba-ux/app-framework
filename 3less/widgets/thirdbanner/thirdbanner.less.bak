@@ -5,7 +5,7 @@
 	padding: 12px 0px 20px 0px;
 	a {
 	  float: left;
-       }
+    }
 	.sub-logo-v4 {
 		display: block;
 		float: left;
@@ -17,5 +17,5 @@
 		font-size: 22px;
 		font-weight: 700;
 		color: #666;
-      }
+    }
 }
